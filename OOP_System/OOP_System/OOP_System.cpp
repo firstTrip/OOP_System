@@ -3,22 +3,62 @@
 using namespace std;
 
 
-typedef struct user
+class User
 {
+private: //정보은닉 
 	int ID;
 	int Money;
 	string Name;
 
-}User;
+public :
+
+	void ShowInfo()
+	{
+		cout << "계좌 번호 :" << ID << '\n';
+		cout << "현재 금액 :" << Money << '\n';
+		cout << "이 름 :" << Name << '\n';
+	}
+
+	int GetID()
+	{
+		return ID;
+	}
 
 
-User user[100];
+	void Insert(int money)
+	{
+		this->Money += money;
+	}
+	void Remove(int money)
+	{
+		if (money > Money)
+			return;
+
+		this->Money -= money;
+	}
+
+	User(int ID, int Money, string Name) : ID(ID), Money(Money), Name(Name)
+	{
+		// 이니셜 라이저
+	}
+
+	~User()
+	{
+		// 소멸자
+	}
+};
+
+
+User *user[100];
 int idx = 0;
 
 void CreateAccount(void);
 void ShowAllAccount(void);
-void Insert(void);
-void Remove(void);
+
+
+void CallInsert(void);
+void CallRemove(void);
+
 void Menu(int);
 
 
@@ -34,11 +74,11 @@ void Menu(int val)
 			break;
 
 		case 2:
-			Insert();
+			CallInsert();
 			break;
 
 		case 3:
-			Remove();
+			CallRemove();
 			break;
 
 		case 4:
@@ -52,7 +92,8 @@ void Menu(int val)
 	}
 }
 
-void CreateAccount()
+
+void  CreateAccount()
 {
 	int num, money;
 	string name;
@@ -64,26 +105,20 @@ void CreateAccount()
 	cout << "이름을 입력 해주세요. " << '\n';
 	cin >> name;
 
-	user[idx].ID = num;
-	user[idx].Money = money;
-	user[idx].Name = name;
-	idx++;
+	user[idx++] = new User(num, money, name);
 }
 
-void ShowAllAccount()
+void  ShowAllAccount()
 {
 	for (int i = 0; i < idx; i++)
 	{
-		cout << (i + 1) << " 번째 계좌" << '\n';
-		cout << "계좌 번호 :" << user[i].ID << '\n';
-		cout << "현재 금액 :" << user[i].Money << '\n';
-		cout << "이 름 :" << user[i].Name << '\n';
-		cout << "--------------------------" << '\n';
+		user[i]->ShowInfo();
 
 	}
 }
 
-void Insert()
+
+void CallInsert()
 {
 	int inputdata;
 	cout << "입금할 계좌를 입력하세요." << '\n';
@@ -91,24 +126,24 @@ void Insert()
 
 	for (int i = 0; i < idx; i++)
 	{
-		if (user[i].ID == inputdata)
+		if (user[i]->GetID() == inputdata)
 		{
 			int money;
 			cout << "입금할 금액을 적어 주세요." << '\n';
 			cin >> money;
 
-			user[i].Money += money;
+			user[i]->Insert(money);
 
 			return;
-
 		}
+
 	}
 
 	cout << "일치하는 계좌가 없습니다." << '\n';
 
 }
 
-void Remove()
+void CallRemove()
 {
 	int inputdata;
 	cout << "출금할 계좌를 입력하세요." << '\n';
@@ -116,21 +151,23 @@ void Remove()
 
 	for (int i = 0; i < idx; i++)
 	{
-		if (user[i].ID == inputdata)
+		if (user[i]->GetID() == inputdata)
 		{
 			int money;
 			cout << "출금할 금액을 적어 주세요." << '\n';
 			cin >> money;
 
-			user[i].Money -= money;
+			user[i]->Remove(money);
 
 			return;
-
 		}
+
 	}
 
 	cout << "일치하는 계좌가 없습니다." << '\n';
 }
+
+
 
 int main()
 {
