@@ -42,9 +42,16 @@ public :
 		// 이니셜 라이저
 	}
 
+	User(const User& copy) : ID(copy.ID) , Money(copy.Money), Name(copy.Name)
+	{
+		cout << "new Copy obj :" << endl;
+	}
+
 	~User()
 	{
 		// 소멸자
+		cout << "delete obj :" << endl;
+
 	}
 };
 
