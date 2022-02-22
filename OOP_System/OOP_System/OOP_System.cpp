@@ -6,20 +6,20 @@ using namespace std;
 class User
 {
 private: //정보은닉 
-	int ID;
+	const int ID;
 	int Money;
-	string Name;
+	const string Name;
 
 public :
 
-	void ShowInfo()
+	void ShowInfo() const
 	{
 		cout << "계좌 번호 :" << ID << '\n';
 		cout << "현재 금액 :" << Money << '\n';
 		cout << "이 름 :" << Name << '\n';
 	}
 
-	int GetID()
+	int GetID() const
 	{
 		return ID;
 	}
@@ -29,12 +29,13 @@ public :
 	{
 		this->Money += money;
 	}
-	void Remove(int money)
+	int Remove(int money)
 	{
 		if (money > Money)
 			return;
 
 		this->Money -= money;
+		return this->Money;
 	}
 
 	User(int ID, int Money, string Name) : ID(ID), Money(Money), Name(Name)
