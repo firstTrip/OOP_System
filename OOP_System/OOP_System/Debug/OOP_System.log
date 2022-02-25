@@ -1,4 +1,4 @@
-﻿  OOP_System.cpp
-C:\Users\hdnwl\Desktop\OOP System\OOP_System\OOP_System\OOP_System.cpp(90,25): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\hdnwl\Desktop\OOP System\OOP_System\OOP_System\OOP_System.cpp(123,25): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+﻿  AccountHandler.cpp
+C:\Users\hdnwl\Desktop\OOP System\OOP_System\OOP_System\NormalAccount.h(21,26): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\hdnwl\Desktop\OOP System\OOP_System\OOP_System\HighCreditAccount.h(28,26): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   OOP_System.vcxproj -> C:\Users\hdnwl\Desktop\OOP System\OOP_System\Debug\OOP_System.exe
