@@ -142,9 +142,11 @@
     <ClCompile Include="Account.cpp" />
     <ClCompile Include="AccountHandler.cpp" />
     <ClCompile Include="BankingSystemMain.cpp" />
+    <ClCompile Include="BoundCheckAccountPtrArray.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Account.h" />
+    <ClInclude Include="AccountArray.h" />
     <ClInclude Include="AccountHandler.h" />
     <ClInclude Include="BankingCommomDecl.h" />
     <ClInclude Include="BankingCommonDecl.h" />

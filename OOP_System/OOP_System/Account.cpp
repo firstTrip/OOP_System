@@ -20,6 +20,18 @@ Account::Account(const Account& ref) : ID(ref.ID), Money(ref.Money)
 	strcpy(cusName, ref.cusName);
 }
 
+Account& Account::operator=(const Account& ref)
+{
+	ID = ref.ID;
+	Money = ref.Money;
+
+	delete []cusName;
+	cusName = new char[strlen(ref.cusName) + 1];
+	strcpy(cusName, ref.cusName);
+	
+
+	return *this;
+}
 
 int Account::GetID() const
 {

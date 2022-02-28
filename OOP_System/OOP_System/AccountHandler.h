@@ -3,6 +3,7 @@
 #define __ACCOUNT_HANDLER_H__
 
 #include "Account.h"
+#include "AccountArray.h"
 
 class AccountHandler // 컨트롤 클래스 추가 , 전반적인 기능을 담당하는 클래스
 {
@@ -10,6 +11,7 @@ private:
 
 	Account* user[100];
 	int idx;
+	BoundCheckAccountPtrArray accArr;
 
 public:
 
