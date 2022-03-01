@@ -1,6 +1,8 @@
 #ifndef __ACCOUNT_H__
 #define __ACCOUNT_H__
 
+#include "String.h"
+
 class Account // Entity 클래스 , 데이터를 저장하고 보관하는 클래스 
 {
 private: //정보은닉 

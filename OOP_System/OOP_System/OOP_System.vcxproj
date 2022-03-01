@@ -143,6 +143,7 @@
     <ClCompile Include="AccountHandler.cpp" />
     <ClCompile Include="BankingSystemMain.cpp" />
     <ClCompile Include="BoundCheckAccountPtrArray.cpp" />
+    <ClCompile Include="String.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Account.h" />
@@ -152,6 +153,7 @@
     <ClInclude Include="BankingCommonDecl.h" />
     <ClInclude Include="HighCreditAccount.h" />
     <ClInclude Include="NormalAccount.h" />
+    <ClInclude Include="String.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="OOP_System.vcxproj.user" />
