@@ -5,14 +5,15 @@
 #include "BankingCommonDecl.h"
 #include "Account.h"
 
-Account::Account(int ID, int Money, char *Name) : ID(ID), Money(Money)
+Account::Account(int ID, int Money, String Name) : ID(ID), Money(Money)
 {
-
-	cusName = new char[strlen(Name) + 1];
-	strcpy(cusName, Name);
+	cusName = Name;
+	//cusName = new char[strlen(Name) + 1];
+	//strcpy(cusName, Name);
 	// ¿Ã¥œº» ∂Û¿Ã¿˙
 }
 
+/*
 Account::Account(const Account& ref) : ID(ref.ID), Money(ref.Money)
 {
 	cout << "new Copy obj :" << endl;
@@ -32,6 +33,7 @@ Account& Account::operator=(const Account& ref)
 
 	return *this;
 }
+*/
 
 int Account::GetID() const
 {
@@ -60,6 +62,7 @@ int Account::Remove(int money)
 	return this->Money;
 }
 
+/*
 Account ::  ~Account()
 {
 	// º“∏Í¿⁄
@@ -67,3 +70,4 @@ Account ::  ~Account()
 	delete[]cusName;
 
 }
+*/

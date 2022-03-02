@@ -3,6 +3,8 @@
 #define __HIGH_CREDIT_ACCOUNT__
 
 #include "NormalAccount.h"
+#include "String.h"
+
 
 class HighCreditAccount : public NormalAccount // NomalAccount를 부모로 사용하는 클래스 추가 이자가 존재한다.
 {
@@ -12,7 +14,7 @@ private:
 
 
 public:
-	HighCreditAccount(int ID, int Money, char* Name, int rate, int special) : NormalAccount(ID, Money, Name, rate), specialInterest(special)
+	HighCreditAccount(int ID, int Money, String Name, int rate, int special) : NormalAccount(ID, Money, Name, rate), specialInterest(special)
 	{
 		// 이니셜 라이저
 	}

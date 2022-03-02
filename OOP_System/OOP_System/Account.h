@@ -8,12 +8,12 @@ class Account // Entity 클래스 , 데이터를 저장하고 보관하는 클래스
 private: //정보은닉 
 	int ID;
 	int Money;
-	char* cusName;
+	String cusName;
 
 public:
 
 
-	Account(int ID, int Money, char* Name); // 생성자
+	Account(int ID, int Money, String Name); // 생성자
 
 	Account(const Account& ref); // 참조자 
 

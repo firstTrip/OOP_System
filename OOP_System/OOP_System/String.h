@@ -22,6 +22,6 @@ public:
 	String& operator+(const String& s);
 
 	friend ostream& operator<<(ostream& os, const String& s);
-	friend istream& operator<<(istream& is, String& s);
+	friend istream& operator>>(istream& is, String& s);
 };
 #endif // !__STRING_H__

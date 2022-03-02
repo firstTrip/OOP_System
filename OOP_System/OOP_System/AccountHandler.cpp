@@ -3,6 +3,8 @@
 #include "Account.h"
 #include "NormalAccount.h"
 #include "HighCreditAccount.h"
+#include "String.h"
+
 
 
 void  AccountHandler::CreateAccount()
@@ -28,7 +30,7 @@ void  AccountHandler::CreateNomalAccount()
 {
 
 	int num, money, interest;
-	char name[NAME_LEN];
+	String name;
 
 	cout << "[º¸Åë¿¹±Ý °èÁÂ]" << '\n';
 
@@ -49,8 +51,7 @@ void  AccountHandler::CreateHighCreditAccount()
 {
 
 	int num, money, interest;
-	char name[NAME_LEN];
-
+	String name;
 	int grade;
 
 	cout << "[½Å¿ë½Å·Ú °èÁÂ]" << '\n';
