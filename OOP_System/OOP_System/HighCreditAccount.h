@@ -26,6 +26,9 @@ public:
 
 	virtual void Deposit(int money)
 	{
+		if (money < 0)
+			DepositException expn(money);
+
 		Account::Deposit(money);
 		Account::Deposit(money * (specialInterest / 100.0)); // 이자 계산
 

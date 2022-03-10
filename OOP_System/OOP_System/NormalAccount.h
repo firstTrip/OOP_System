@@ -3,6 +3,7 @@
 
 #include "Account.h"
 #include "String.h"
+#include "AccountException.h" 
 
 
 class NormalAccount : public Account // Account 를 부모로 둔 자식 클래스 , interst 변수가 추가된다.
@@ -19,6 +20,9 @@ public:
 
 	virtual void Deposit(int money)
 	{
+		if (money < 0)
+			DepositException expn(money);
+
 		Account::Deposit(money);
 		Account::Deposit(money * (interRate / 100.0)); // 이자 계산
 

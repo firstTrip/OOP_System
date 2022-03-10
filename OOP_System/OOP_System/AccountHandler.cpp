@@ -4,6 +4,8 @@
 #include "NormalAccount.h"
 #include "HighCreditAccount.h"
 #include "String.h"
+#include "AccountException.h" 
+
 
 
 void  AccountHandler::CreateAccount()
@@ -43,7 +45,7 @@ void  AccountHandler::CreateNomalAccount()
 	cout << "이자율 :. " << '\n';
 	cin >> interest;
 
-	user[idx++] = new NormalAccount(num, money, name, interest);
+	accArr[idx++] = new NormalAccount(num, money, name, interest);
 }
 
 void  AccountHandler::CreateHighCreditAccount()
@@ -72,13 +74,13 @@ void  AccountHandler::CreateHighCreditAccount()
 	{
 
 	case 1:
-		user[idx++] = new HighCreditAccount(num, money, name, interest, Level_A);
+		accArr[idx++] = new HighCreditAccount(num, money, name, interest, Level_A);
 		break;
 	case 2:
-		user[idx++] = new HighCreditAccount(num, money, name, interest, Level_B);
+		accArr[idx++] = new HighCreditAccount(num, money, name, interest, Level_B);
 		break;
 	case 3:
-		user[idx++] = new HighCreditAccount(num, money, name, interest, Level_C);
+		accArr[idx++] = new HighCreditAccount(num, money, name, interest, Level_C);
 		break;
 	default:
 		break;
@@ -90,7 +92,7 @@ void AccountHandler::ShowAllAccount() const
 {
 	for (int i = 0; i < idx; i++)
 	{
-		user[i]->ShowInfo();
+		accArr[i]->ShowInfo();
 
 	}
 }
@@ -104,13 +106,20 @@ void AccountHandler::CallInsert()
 
 	for (int i = 0; i < idx; i++)
 	{
-		if (user[i]->GetID() == inputdata)
+		if (accArr[i]->GetID() == inputdata)
 		{
 			int money;
 			cout << "입금할 금액을 적어 주세요." << '\n';
 			cin >> money;
+			try
+			{
+				accArr[i]->Deposit(money);
 
-			user[i]->Deposit(money);
+			}
+			catch (DepositException &expn)
+			{
+				expn.ShowAccountException();
+			}
 
 			return;
 		}
@@ -129,13 +138,22 @@ void AccountHandler::CallRemove()
 
 	for (int i = 0; i < idx; i++)
 	{
-		if (user[i]->GetID() == inputdata)
+		if (accArr[i]->GetID() == inputdata)
 		{
 			int money;
 			cout << "출금할 금액을 적어 주세요." << '\n';
 			cin >> money;
 
-			user[i]->Remove(money);
+			try
+			{
+				accArr[i]->Remove(money);
+
+			}
+			catch (WithdrawException& expn)
+			{
+				expn.ShowAccountException();
+
+			}
 
 			return;
 		}
@@ -162,5 +180,5 @@ AccountHandler::AccountHandler() : idx(0) // AccountHandler 의 생성자 선언
 AccountHandler::~AccountHandler() // AccountHandler 의 소멸자 선언 사용된 메모리를 삭제 시킨다.
 {
 	for (int i = 0; i < idx; i++)
-		delete user[i];
+		delete accArr[i];
 }

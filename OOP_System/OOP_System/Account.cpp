@@ -4,8 +4,11 @@
 
 #include "BankingCommonDecl.h"
 #include "Account.h"
+#include "AccountException.h" 
 
-Account::Account(int ID, int Money, String Name) : ID(ID), Money(Money)
+
+
+Account::Account(int ID, int Money, String Name) : ID(ID), balance(Money)
 {
 	cusName = Name;
 	//cusName = new char[strlen(Name) + 1];
@@ -43,23 +46,30 @@ int Account::GetID() const
 void Account::ShowInfo() const // virtual 함수를 사용하여 다형성을 사용
 {
 	cout << "계좌 번호 :" << ID << '\n';
-	cout << "현재 금액 :" << Money << '\n';
+	cout << "현재 금액 :" << balance << '\n';
 	cout << "이 름 :" << cusName << '\n';
 }
 
 
 void Account::Deposit(int money)
 {
-	this->Money += money;
+	if (money < 0)
+		DepositException expn(money);
+
+	this->balance += money;
+	
 }
 
 int Account::Remove(int money)
 {
-	if (money > Money)
-		return 0;
+	if (money > balance)
+		throw WithdrawException(money);
 
-	this->Money -= money;
-	return this->Money;
+	if(balance<money)
+		throw WithdrawException(money);
+
+	balance -= money;
+	return this->balance;
 }
 
 /*
